@@ -1,0 +1,53 @@
+[
+
+  {
+
+    "id": 1,
+    "username": "admin_master",
+    "role": "root",
+    "hasSudo": true,
+    "isLoggedIn": true
+  },
+
+  {
+
+    "id": 2,
+    "username": "dev_henrique",
+    "role": "normal",
+    "hasSudo": true,
+    "isLoggedIn": true
+
+  },
+
+  {
+
+    "id": 3,
+    "username": "user_comum",
+    "role": "normal",
+    "hasSudo": false,
+    "isLoggedIn": false
+
+  },
+
+  {
+
+    "id": 4,
+    "username": "estagiario_ti",
+    "role": "normal",
+    "hasSudo": true,
+    "isLoggedIn": false
+
+  },
+
+  {
+
+    "id": 5,
+    "username": "visitante_01",
+    "role": "normal",
+    "hasSudo": false,
+    "isLoggedIn": true
+
+  }
+
+]
+

@@ -1,11 +1,14 @@
 import { Command } from "commander"
 
-import { getUserByUsername, getUserById } from "../utils/catcher"
-import { getLoggedUsers, getUsersWithSudo, getUsersByRole } from "../utils/filters"
+import { getUserByUsername, getUserById } from "../utils/readers/catcher"
+import { getLoggedUsers, getUsersWithSudo, getUsersByRole } from "../utils/readers/filters"
 
 export function cliArgs() {
   const program = new Command()
 
+  // TODO - Modularizar args em funcoes ou ate em arquivos separados
+
+  // Leitores
   program
     .name("UserSys")
     .description("Uma cli simples de CRUD para estudos")
@@ -79,6 +82,14 @@ export function cliArgs() {
         }
       }
     )
+
+  // Criadores
+  program
+    .command("creator")
+    .description("Cria um novo usario")
+    .action(() => {
+      console.log("LOGDEVTEST: Importar aqui a funcao de criacao de usuarios")
+    })
 
   program.parse()
 

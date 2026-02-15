@@ -1,6 +1,6 @@
 import path from "node:path"
 
-import { User } from "../types/user"
+import { User } from "../../types/user"
 
 export async function userParser() {
   try {

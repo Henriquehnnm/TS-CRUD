@@ -1,4 +1,4 @@
-import { userParser } from "../utils/parser"
+import { userParser } from "../readers/parser"
 
 export async function getUserById(num: number) {
   try {

@@ -2,8 +2,10 @@ import { Command } from "commander"
 
 import { getUserByUsername, getUserById } from "../utils/readers/catcher"
 import { getLoggedUsers, getUsersWithSudo, getUsersByRole } from "../utils/readers/filters"
+import { createUser } from "../utils/writers/creator"
+import type {User} from "../types/user.ts";
 
-export function cliArgs() {
+export function cliArgs(): void {
   const program = new Command()
 
   // TODO - Modularizar args em funcoes ou ate em arquivos separados
@@ -22,7 +24,7 @@ export function cliArgs() {
     .action(
       async (options) => {
         if (options.name) {
-          const user = await getUserByUsername(options.name)
+          const user: User | null = await getUserByUsername(options.name)
 
           if (user) {
             console.table(user)
@@ -32,7 +34,7 @@ export function cliArgs() {
         }
 
         if (options.identifier) {
-          const user = await getUserById(Number(options.identifier))
+          const user: User | null = await getUserById(Number(options.identifier))
 
           if (user) {
             console.table(user)
@@ -52,7 +54,7 @@ export function cliArgs() {
     .action(
       async (options) => {
         if (options.logged) {
-          const users = await getLoggedUsers()
+          const users: User[] = await getLoggedUsers()
 
           if (users.length > 0) {
             console.table(users)
@@ -62,7 +64,7 @@ export function cliArgs() {
         }
 
         if (options.sudo) {
-          const users = await getUsersWithSudo()
+          const users: User[] = await getUsersWithSudo()
 
           if (users.length > 0) {
             console.table(users)
@@ -72,7 +74,7 @@ export function cliArgs() {
         }
 
         if (options.role) {
-          const users = await getUsersByRole(options.role)
+          const users: User[] = await getUsersByRole(options.role)
 
           if (users.length > 0) {
             console.table(users)
@@ -85,10 +87,10 @@ export function cliArgs() {
 
   // Criadores
   program
-    .command("creator")
+    .command("create")
     .description("Cria um novo usario")
-    .action(() => {
-      console.log("LOGDEVTEST: Importar aqui a funcao de criacao de usuarios")
+    .action(async (): Promise<void> => {
+       await createUser()
     })
 
   program.parse()
